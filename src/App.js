@@ -1,7 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import {Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import Search from "./Search";
 import BooksList from "./BooksList";
 
@@ -11,7 +11,6 @@ class BooksApp extends React.Component {
     };
 
     componentDidMount() {
-        // get all books from server
         BooksAPI.getAll()
             .then(books => {
                 this.setState({books});
