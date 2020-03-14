@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import Book from "./Book";
+import PropTypes from "prop-types";
 
 class BooksShelf extends Component {
+    static propType = {
+        book: PropTypes.object.isRequired,
+        books: PropTypes.array.isRequired,
+        onUpdateShelf: PropTypes.func.isRequired
+    };
+
     render() {
         const { title, books, onUpdateShelf } = this.props;
 
@@ -11,10 +18,11 @@ class BooksShelf extends Component {
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         {
-                            books && books.map((book, idx) => (
-                                <li key={idx}>
+                            books && books.map(book => (
+                                <li key={book.id}>
                                     <Book
                                         book={book}
+                                        books={books}
                                         onUpdateShelf={onUpdateShelf}
                                     />
                                 </li>
